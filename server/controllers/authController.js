@@ -81,6 +81,7 @@ const getProfile = (req, res) => {
     }
 }
 
+// Logout endpoint
 const logoutUser = (req, res) => {
     res.clearCookie('token');
     res.json({
