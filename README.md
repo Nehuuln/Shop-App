@@ -6,16 +6,16 @@
       1.    {
                   "name": "Shoes",
                   "price": 100,
-            }
+            }  
       2.    {
                   "name": "Sunglasses",
                   "price": 30,
-            }
+            }  
       3.    {
                   "name": "Sweat",
                   "price": 60,
-            }
-            
+            }  
+
 ## In the client you need to install :
 
 The framework that i'm using is Vite with React using JavaScript :  
