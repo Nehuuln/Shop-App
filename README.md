@@ -1,5 +1,21 @@
 # Welcome to the Shopping Application
 
+## To set up correctly the project you need to :  
+
+- Open your POSTMAN in a POST Method and write ``localhost:8000/products`` and in the body you need to write :  
+      1.    {
+                  "name": "Shoes",
+                  "price": 100,
+            }
+      2.    {
+                  "name": "Sunglasses",
+                  "price": 30,
+            }
+      3.    {
+                  "name": "Sweat",
+                  "price": 60,
+            }
+            
 ## In the client you need to install :
 
 The framework that i'm using is Vite with React using JavaScript :  
