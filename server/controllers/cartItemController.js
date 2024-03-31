@@ -6,7 +6,7 @@ const addToCart = async (req, res) => {
     try {
         const productId = req.body.productId;
         const { quantity } = req.body;
-        const userId = req.user._id;
+        const userId = req.body.userId;
 
         const product = await Product.findById(productId);
         if (!product) {
@@ -28,7 +28,7 @@ const addToCart = async (req, res) => {
 // Get the products from the cart
 const getCartItems = async (req, res) => {
     try {
-        const userId = req.user._id;
+        const userId = req.query.userId;
         const cartItems = await CartItem.find({ user: userId }).populate('product');
         res.json(cartItems);
     } catch (error) {
@@ -42,6 +42,11 @@ const updateCartItem = async (req, res) => {
         const { id } = req.params;
         const { quantity } = req.body;
         const updatedCartItem = await CartItem.findByIdAndUpdate(id, { quantity }, { new: true });
+
+        if (!updatedCartItem) {
+            return res.status(404).json({ error: 'Cart item not found' });
+        }
+
         res.json(updatedCartItem);
     } catch (error) {
         res.status(500).json({ error: error.message });
@@ -52,7 +57,12 @@ const updateCartItem = async (req, res) => {
 const deleteCartItem = async (req, res) => {
     try {
         const { id } = req.params;
-        await CartItem.findByIdAndDelete(id);
+        const deletedCartItem = await CartItem.findByIdAndDelete(id);
+
+        if (!deletedCartItem) {
+            return res.status(404).json({ error: 'Cart item not found' });
+        }
+
         res.json({ message: 'Item deleted successfully' });
     } catch (error) {
         res.status(500).json({ error: error.message });

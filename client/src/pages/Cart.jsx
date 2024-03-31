@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
+import { UserContext } from '../../context/userContext'
 
 export default function Cart() {
   const [cartItems, setCartItems] = useState([]);
+  const {user} = useContext(UserContext); 
 
   useEffect(() => {
     const fetchCartItems = async () => {
       try {
-        const response = await axios.get('/cart_items');
+        const response = await axios.get('/cart_items', { params: { userId: user.id } });
         setCartItems(response.data);
       } catch (error) {
         console.error('Error fetching cart items:', error);

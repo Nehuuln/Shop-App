@@ -1,8 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
+import { toast } from "react-hot-toast";
+import { UserContext } from '../../context/userContext'
+import { useNavigate } from "react-router-dom";
 
 export default function Product() {
   const [products, setProducts] = useState([]);
+  const {user} = useContext(UserContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -18,7 +23,9 @@ export default function Product() {
 
   const addToCart = async (productId) => {
     try {
-      await axios.post('/cart_items', { productId, quantity: 1 });
+      await axios.post('/cart_items', { productId, quantity: 1, userId: user.id });
+      toast.success('Add to cart successful!')
+      navigate('/cart')
     } catch (error) {
       console.error('Error adding to cart:', error);
     }
