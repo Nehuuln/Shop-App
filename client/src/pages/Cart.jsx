@@ -44,8 +44,11 @@ export default function Cart() {
 
   return (
     <div>
-      <h2>Cart</h2>
-      {cartItems.map((item) => (
+    <h2>Cart</h2>
+    {cartItems.length === 0 ? (
+      <p>Empty Cart</p>
+    ) : (
+      cartItems.map((item) => (
         <div key={item._id}>
           <h3>{item.product.name}</h3>
           <p>Price: {item.product.price}</p>
@@ -58,7 +61,8 @@ export default function Cart() {
             onChange={(e) => updateQuantity(item._id, parseInt(e.target.value))}
           />
         </div>
-      ))}
-    </div>
+      ))
+    )}
+  </div>
   );
 };

@@ -24,7 +24,7 @@ export default function Register() {
         toast.error(data.error)
       } else {
         setData({})
-        toast.success('Login successful!')
+        toast.success('Your account has been created successfully!')
         navigate('/login')
       }
     } catch (error) {
