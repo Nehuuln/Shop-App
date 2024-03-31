@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { UserContext } from '../../context/userContext'
+import { toast } from "react-hot-toast";
 
 export default function Cart() {
   const [cartItems, setCartItems] = useState([]);
@@ -22,6 +23,7 @@ export default function Cart() {
     try {
       await axios.delete(`/cart_items/${itemId}`);
       setCartItems(prevItems => prevItems.filter(item => item._id !== itemId));
+      toast.success('Product removed!')
     } catch (error) {
       console.error('Error removing from cart:', error);
     }

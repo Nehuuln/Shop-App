@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { useContext } from "react"
 import { UserContext } from '../../context/userContext'
 import { useNavigate } from 'react-router-dom';
+import { toast } from "react-hot-toast";
 
 export default function Navbar() {
   const { user } = useContext(UserContext);
@@ -12,6 +13,7 @@ export default function Navbar() {
       document.cookie = 'token=; expires=Thu, 01 Jan 1978 UTC; path=/';
       navigate('/');
       window.location.reload();
+      toast.success('Logged out!')
     } catch (error) {
       console.log(error);
     }
