@@ -8,17 +8,23 @@ export default function Navbar() {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    document.cookie = 'token=; expires=Thu, 01 Jan 1978 UTC; path=/';
-
-    navigate('/');
-    window.location.reload();
+    try {
+      document.cookie = 'token=; expires=Thu, 01 Jan 1978 UTC; path=/';
+      navigate('/');
+      window.location.reload();
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (
     <nav>
       <Link to="/">Home</Link>
+      
       {user ? (
         <>
+          <Link to="/product">Products</Link>
+          <Link to="/cart">Cart</Link>
           <button onClick={handleLogout}>Logout</button>
         </>
       ) : (

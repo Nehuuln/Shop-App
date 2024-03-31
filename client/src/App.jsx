@@ -4,6 +4,8 @@ import Navbar from '../src/components/Navbar';
 import Home from '../src/pages/Home';
 import Register from '../src/pages/Register';
 import Login from '../src/pages/Login';
+import Cart from '../src/pages/Cart';
+import Product from '../src/pages/Product';
 import axios from 'axios';
 import { Toaster } from 'react-hot-toast';
 import { UserContextProvider } from '../context/userContext';
@@ -20,6 +22,8 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
+        <Route path='/cart' element={<Cart />} />
+        <Route path='/product' element={<Product />} />
       </Routes>
     </UserContextProvider>
   )
