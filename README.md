@@ -40,6 +40,14 @@ In the package.json on the ./server you should integrate :
 ``start "nodemon index.js"`` (take a look to the screenshot)
 ![image](https://github.com/Nehuuln/Shop-App/assets/113974530/43edb30e-7249-41b3-89d5-6322e08f8b2c)
 
+## To initialize the test you need to install :  
+- `npm i jest mocha supertest chai cypress`
+
+### To run the test you need to be in the __test__ directory:  
+- For jest `npx jest register.test.js`
+- For mocha `npx mocha login.test.js`
+- For cypress `npx cypress run cartItem.test.js`
+
 
 This project was carried by William TRUGET and me (Maxime YE)  
 With the help of youtube
