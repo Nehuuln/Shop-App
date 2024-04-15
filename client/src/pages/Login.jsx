@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { GoogleLogin } from '@react-oauth/google';
 
 export default function Login() {
   const navigate = useNavigate()
@@ -52,6 +53,15 @@ export default function Login() {
         />
         <button type="submit">Login</button>
       </form>
+      <GoogleLogin
+  onSuccess={credentialResponse => {
+
+    console.log(credentialResponse);
+  }}
+  onError={() => {
+    console.log('Login Failed');
+  }}
+/>
     </div>
   );
 }
