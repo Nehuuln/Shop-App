@@ -3,6 +3,7 @@ import axios from "axios";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { GoogleLogin } from '@react-oauth/google';
+import { jwtDecode } from 'jwt-decode'
 
 export default function Login() {
   const navigate = useNavigate()
@@ -55,8 +56,8 @@ export default function Login() {
       </form>
       <GoogleLogin
   onSuccess={credentialResponse => {
-
-    console.log(credentialResponse);
+    const decoded = jwtDecode(credentialResponse?.credential);
+    console.log(decoded);
   }}
   onError={() => {
     console.log('Login Failed');
@@ -64,4 +65,4 @@ export default function Login() {
 />
     </div>
   );
-}
+} 

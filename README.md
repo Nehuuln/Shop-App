@@ -22,7 +22,7 @@ The framework that i'm using is Vite with React using JavaScript :
 
 ``npm i``  to initialize the nodemodule
 
-``npm i axios react-hot-toast react-router-dom``  
+``npm i axios react-hot-toast react-router-dom @react-oauth/google``  
 
 ## In the ./server if the node_modules are not in the server directory you need to install :  
 
