@@ -32,10 +32,11 @@ export default function Product() {
   };
 
   return (
-    <div>
+    <div className='product'>
       <h2>Products</h2>
       {products.map((product) => (
         <div key={product._id}>
+          <img src={product.image} alt={product.name} />
           <h3>{product.name}</h3>
           <p>Price: {product.price}</p>
           <button onClick={() => addToCart(product._id)}>Add to Cart</button>

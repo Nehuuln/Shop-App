@@ -3,35 +3,34 @@ import axios from "axios";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { GoogleLogin } from '@react-oauth/google';
-import { jwtDecode } from 'jwt-decode'
+import { jwtDecode } from 'jwt-decode';
 
 export default function Login() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [data, setData] = useState({
     email: '',
     password: '',
-  })
+  });
 
   const loginUser = async (e) => {
     e.preventDefault();
-    const {email, password} = data
+    const {email, password} = data;
     try {
       const {data} = await axios.post('/login', {
         email,
         password,
       });
       if(data.error) {
-        toast.error(data.error)
+        toast.error(data.error);
       } else {
         setData({});
-        toast.success('Login successful!')
-        navigate('/')
+        toast.success('Login successful!');
+        navigate('/');
       }
     } catch (error) {
-      
+      console.error(error);
     }
-
-  }
+  };
 
   return (
     <div className="login-container">
@@ -54,15 +53,17 @@ export default function Login() {
         />
         <button type="submit">Login</button>
       </form>
-      <GoogleLogin
-  onSuccess={credentialResponse => {
-    const decoded = jwtDecode(credentialResponse?.credential);
-    console.log(decoded);
-  }}
-  onError={() => {
-    console.log('Login Failed');
-  }}
-/>
+      <div className="google-login-container">
+        <GoogleLogin 
+          onSuccess={credentialResponse => {
+            const decoded = jwtDecode(credentialResponse?.credential);
+            console.log(decoded);
+          }}
+          onError={() => {
+            console.log('Login Failed');
+          }}
+        />
+      </div>
     </div>
   );
 } 

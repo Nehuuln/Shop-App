@@ -43,26 +43,28 @@ export default function Cart() {
   };
 
   return (
-    <div>
-    <h2>Cart</h2>
-    {cartItems.length === 0 ? (
-      <p>Empty Cart</p>
-    ) : (
-      cartItems.map((item) => (
-        <div key={item._id}>
-          <h3>{item.product.name}</h3>
-          <p>Price: {item.product.price}</p>
-          <p>Quantity: {item.quantity}</p>
-          <button onClick={() => removeFromCart(item._id)}>Remove</button>
-          <input
-            type="number"
-            min="1"
-            value={item.quantity}
-            onChange={(e) => updateQuantity(item._id, parseInt(e.target.value))}
-          />
-        </div>
-      ))
-    )}
-  </div>
+    <div className='cart'>
+      <h2 id="cart-title">Cart</h2>
+      {cartItems.length === 0 ? (
+        <p id="empty-cart-msg">Empty Cart</p>
+      ) : (
+        cartItems.map((item, index) => (
+          <div key={item._id} id={`cart-item-${index}`} className="cart-item">
+            <h3 className="item-name">{item.product.name}</h3>
+            <img src={item.product.image} alt={item.product.name} className="item-image" />
+            <p className="item-price">Price: {item.product.price}</p>
+            <p className="item-quantity">Quantity: {item.quantity}</p>
+            <button onClick={() => removeFromCart(item._id)} className="remove-btn">Remove</button>
+            <input
+              type="number"
+              min="1"
+              value={item.quantity}
+              onChange={(e) => updateQuantity(item._id, parseInt(e.target.value))}
+              className="quantity-input"
+            />
+          </div>
+        ))
+      )}
+    </div>
   );
 };
