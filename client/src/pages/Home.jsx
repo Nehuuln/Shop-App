@@ -6,7 +6,7 @@ export default function Home() {
   
   return (
     <div className="home-container">
-      <h1 className="home-title">Welcome to the Wyth & Co. !</h1>
+      <h1 className="home-title">Welcome to the Wyth & Co. the official shop clothes !</h1>
       <h2 className="home-slogan">Make your shopping great again !</h2>
       {user ? (
         <>

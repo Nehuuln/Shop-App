@@ -5,6 +5,7 @@ import UserInfoTooltip from './UserInfoTooltip';
 import { useNavigate } from 'react-router-dom';
 import { toast } from "react-hot-toast";
 import logo from "../assets/Wyth&co-LOGO.png"
+import cartLogo from '../assets/cart-logo.png'
 
 export default function Navbar() {
   const { user } = useContext(UserContext);
@@ -31,7 +32,9 @@ export default function Navbar() {
       {user ? (
         <>
           <Link to="/product" className="nav-item">Products</Link>
-          <Link to="/cart" className="nav-item">Cart</Link>
+          <Link to="/cart" className="nav-item">
+            <img src={cartLogo} alt="CartLogo" className='cart-logo'/>
+            </Link>
           <div
             className="user-info-container"
             onMouseEnter={() => setShowUserInfo(true)}
