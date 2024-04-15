@@ -22,7 +22,7 @@ The framework that i'm using is Vite with React using JavaScript :
 
 ``npm i``  to initialize the nodemodule
 
-``npm i axios react-hot-toast react-router-dom @react-oauth/google``  
+``npm i axios react-hot-toast react-router-dom @react-oauth/google jwt-decode``  
 
 ## In the ./server if the node_modules are not in the server directory you need to install :  
 
@@ -41,13 +41,13 @@ In the package.json on the ./server you should integrate :
 ![image](https://github.com/Nehuuln/Shop-App/assets/113974530/43edb30e-7249-41b3-89d5-6322e08f8b2c)
 
 ## To initialize the test you need to install :  
-- `npm i jest mocha supertest chai cypress`
+- `npm i jest`
 
-### To run the test you need to be in the __test__ directory:  
+### To run the test you need to be in the test directory:  
 - For jest `npx jest register.test.js`
 - For mocha `npx mocha login.test.js`
 - For cypress `npx cypress run cartItem.test.js`
 
 
-This project was carried by William TRUGET and me (Maxime YE)  
+This project was carried by William TRUGET, Abdoul Hamid DIAW and me (Maxime YE)  
 With the help of youtube
